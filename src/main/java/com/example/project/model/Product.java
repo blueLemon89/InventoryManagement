@@ -33,6 +33,7 @@ public class Product {
     @NonNull
     private Integer product_amount;
 
+    @NonNull
     private String product_desc;
 
 }

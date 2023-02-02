@@ -10,7 +10,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <<a class="navbar-brand" th:href = "@{/category}">Inventory Management System</a>
+    <<a class="navbar-brand" th:href = "@{/product/product.html}">Inventory Management System</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -22,7 +22,7 @@
         <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
             <h1 class = "text-center"> Update product </h1>
             <div class = "card-body">
-                <form th:action="@{/product}" th:object = "${products}" method="POST">
+                <form th:action="@{/product/product.html}" th:object = "${products}" method="POST">
                     <div class ="form-group">
                         <label> Name * </label>
                         <input

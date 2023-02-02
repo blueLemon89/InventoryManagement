@@ -19,14 +19,16 @@ public class ProductService {
     public Product saveProduct(Product product) {
         Product newProduct = new Product();
 
-        if(product.getProduct_amount() != null
-                && product.getProduct_name() != null
-                && product.getProduct_type() != null
-                && product.getProduct_price() != null){
+        if(product.getProduct_name() != null
+        && product.getProduct_type() != null
+        && product.getProduct_amount() != null
+        && product.getProduct_price() != null
+        && product.getProduct_desc() != null)
+        {
             newProduct.setProduct_name(product.getProduct_name());
-            newProduct.setProduct_price(product.getProduct_price());
-            newProduct.setProduct_amount(product.getProduct_amount());
             newProduct.setProduct_type(product.getProduct_type());
+            newProduct.setProduct_amount(product.getProduct_amount());
+            newProduct.setProduct_price(product.getProduct_price());
             newProduct.setProduct_desc(product.getProduct_desc());
         }
         return productRepository.save(newProduct);
