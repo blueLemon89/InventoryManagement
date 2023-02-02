@@ -16,14 +16,14 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Product saveProduct(Product product) {
+    public void saveProduct(Product product) {
         Product newProduct = new Product();
 
-        if(product.getProduct_name() != null
-        && product.getProduct_type() != null
-        && product.getProduct_amount() != null
-        && product.getProduct_price() != null
-        && product.getProduct_desc() != null)
+        if(!product.getProduct_name().isEmpty()
+        && !product.getProduct_type().isEmpty()
+        && !product.getProduct_amount().toString().isEmpty()
+        && !product.getProduct_price().toString().isEmpty()
+        && !product.getProduct_desc().isEmpty())
         {
             newProduct.setProduct_name(product.getProduct_name());
             newProduct.setProduct_type(product.getProduct_type());
@@ -31,16 +31,24 @@ public class ProductService {
             newProduct.setProduct_price(product.getProduct_price());
             newProduct.setProduct_desc(product.getProduct_desc());
         }
-        return productRepository.save(newProduct);
+        productRepository.save(newProduct);
+    }
+
+    public Product getProductById(Integer id){
+        return productRepository.findById(id).get();
+
     }
 
     public Product updateProduct(Product product) {
         return productRepository.save(product);
     }
-
     public void deleteProductById(Integer id) {
         productRepository.deleteById(id);
     }
 
+
+    public List<Product> getProductsByKeyWord(String keyWord){
+        return productRepository.findByKeyWord(keyWord);
+    }
 
 }
