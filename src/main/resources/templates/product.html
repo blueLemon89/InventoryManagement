@@ -7,7 +7,6 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -29,8 +28,13 @@
             <a  th:href = "@{/create.html}" class = "btn btn-primary btn-sm mb-3"> Add Product</a>
         </div>
         <form th:action="@{/product.html/search}" method="get">
-            <input type="text" name="keyWord" th:value="${keyWord}"  placeholder="Find Product..."  >
+            <input type="text" name="keyWord" th:value="${keyWord}"  placeholder="Find Product..." >
             <button type="submit" class="btn btn-info">Search</button>
+            <div>
+                <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
+                <div class="alert alert-danger" role="alert" th:text="${success}" th:if="${success}"></div>
+            </div>
+
         </form>
     </div>
 
@@ -64,5 +68,6 @@
     </table>
 
 </div>
+
 </body>
 </html>

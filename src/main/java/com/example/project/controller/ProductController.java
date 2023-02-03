@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class ProductController {
     @GetMapping(value = "/product.html")
     public String getProductHTML(Model model){
         model.addAttribute("products", productService.getAllProduct());
-        return "product.html";
+        return "product";
     }
 
     /**
@@ -71,7 +72,7 @@ public class ProductController {
     @GetMapping("/edit.html/{id}")
     public String editProductForm(@PathVariable Integer id, Model model){
         model.addAttribute("products", productService.getProductById(id));
-        return "edit_product.html";
+        return "edit_product";
     }
 
     @PostMapping(value = "/product.html/{id}")
@@ -79,9 +80,6 @@ public class ProductController {
                               @ModelAttribute("products") Product product,
                               Model model){
         Product productFromDatabase = productService.getProductById(id);
-        if(productFromDatabase == null) {
-            return "Product not found";
-        }
         productFromDatabase.setProduct_id(id);
         productFromDatabase.setProduct_name(product.getProduct_name());
         productFromDatabase.setProduct_type(product.getProduct_type());
@@ -102,15 +100,19 @@ public class ProductController {
     }
 
     @GetMapping("/product.html/search")
-    public String searchProduct(Product product, Model model,@RequestParam String keyWord){
+    public String searchProduct(Product product, Model model, @RequestParam String keyWord){
         List<Product> productList;
         if(keyWord != null){
             productList = productService.getProductsByKeyWord(keyWord);
+            if(productList.isEmpty()){
+                productList = productService.getAllProduct();
+                model.addAttribute("error", "Can not find the product that contains " + keyWord);
+            } else model.addAttribute("success", "Search successful!");
         }
         else{
             productList = productService.getAllProduct();
         }
         model.addAttribute("products", productList);
-        return "product.html";
+        return "product";
     }
 }
