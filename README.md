@@ -1,12 +1,14 @@
 # InventoryManagement
 
-An Website to manage all of products in inventory with RESTAPI.<br />
+An Website to manage all of products in inventory with RESTAPI on localhost. It depends on MVC design pattern and use SQL to store database<br />
 Technology used: 
 - Spring boot (for Back-end)
 - Thymeleaf (for Front-end)
-- MySQL
+- MySQL 
 
+<br />
 
-Download Java SE Development Kit [here](https://www.oracle.com/java/technologies/downloads/) to set-up enviroment for project
-
-and run the project with IDE (Inteliji/Eclipse/VSCode....). <br />
+To clone this project. Run this command
+```sh
+git clone https://github.com/blueLemon89/InventoryManagement
+```
