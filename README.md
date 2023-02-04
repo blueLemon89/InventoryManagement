@@ -10,5 +10,5 @@ Technology used:
 
 To clone this project. Run this command
 ```sh
-git clone https://github.com/blueLemon89/InventoryManagement
+git clone https://github.com/blueLemon89/InventoryManagement.git
 ```
